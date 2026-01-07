@@ -1,16 +1,12 @@
 import { Trophy, Zap, Target, Cpu, MonitorDot, CircleHelp } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import HeroTitle from "@/components/HeroTitle";
 import StatsCard from "@/components/StatsCard";
 import FeatureCard from "@/components/FeatureCard";
 import CTASection from "@/components/CTASection";
-import { toast } from "sonner";
 
 const Index = () => {
-  const handleLaunch = (simulator: string) => {
-    toast.success(`Launching ${simulator}...`, {
-      description: "Get ready to master OS concepts!",
-    });
-  };
+  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
@@ -38,30 +34,30 @@ const Index = () => {
             title="FCFS Simulator"
             description="Visualize First-Come First-Served CPU scheduling with interactive Gantt charts"
             variant="cyan"
-            onLaunch={() => handleLaunch("FCFS Simulator")}
+            onLaunch={() => navigate("/fcfs")}
           />
           <FeatureCard
             icon={MonitorDot}
             title="LRU Simulator"
             description="Watch page replacement happen in real-time with animated memory frames"
             variant="magenta"
-            onLaunch={() => handleLaunch("LRU Simulator")}
+            onLaunch={() => navigate("/lru")}
           />
           <FeatureCard
             icon={CircleHelp}
             title="OS Quiz"
             description="Test your knowledge and earn XP with gamified quiz challenges"
             variant="purple"
-            onLaunch={() => handleLaunch("OS Quiz")}
+            onLaunch={() => navigate("/quiz")}
           />
         </div>
 
         {/* CTA Section */}
         <div className="max-w-3xl mx-auto">
           <CTASection
-            onPlayFCFS={() => handleLaunch("FCFS Simulator")}
-            onPlayLRU={() => handleLaunch("LRU Simulator")}
-            onTakeQuiz={() => handleLaunch("OS Quiz")}
+            onPlayFCFS={() => navigate("/fcfs")}
+            onPlayLRU={() => navigate("/lru")}
+            onTakeQuiz={() => navigate("/quiz")}
           />
         </div>
       </div>
